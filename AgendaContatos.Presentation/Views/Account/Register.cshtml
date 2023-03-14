@@ -1,0 +1,66 @@
+﻿@model AgendaContatos.Presentation.Models.RegisterViewModel
+
+@{
+    Layout = "~/Views/Shared/AccountLayout.cshtml";
+}
+
+<div class="row">
+    <div class="col-md-4 offset-md-4">
+        <div class="card mt-3">
+            <div class="card-body">
+
+                <div class="text-center">
+                    <h3>Crie sua Conta de Acesso</h3>
+                    <p>Preencha o Formulário para realizar o seu cadastro</p>
+                </div>
+
+                @using (Html.BeginForm())
+                {
+                        <div class="mb-2">
+                            <label>Nome do usuário:</label>
+                        @Html.TextBoxFor(model => model.Nome, new { @class = "form-control" })
+                            <span class="text-danger">
+                            @Html.ValidationMessageFor(model => model.Nome)
+                            </span>
+                        </div>
+
+                        <div class="mb-2">
+                            <label>Email de acesso:</label>
+                        @Html.TextBoxFor(model => model.Email, new { @class = "form-control" })
+                            <span class="text-danger">
+                            @Html.ValidationMessageFor(model => model.Email)
+                            </span>
+                        </div>
+
+                        <div class="mb-2">
+                            <label>Senha de acesso:</label>
+                        @Html.PasswordFor(model => model.Senha, new { @class = "form-control" })
+                            <span class="text-danger">
+                            @Html.ValidationMessageFor(model => model.Senha)
+                            </span>
+                        </div>
+
+                        <div class="mb-2">
+                            <label>Confirme a sua senha:</label>
+                        @Html.PasswordFor(model => model.SenhaConfirmacao, new { @class = "form-control" })
+                            <span class="text-danger">
+                            @Html.ValidationMessageFor(model => model.SenhaConfirmacao)
+                            </span>
+                        </div>
+
+                        <div class="mb-2 d-grid">
+                                <input type="submit" value="Realizar Cadastro" class="btn btn-success" />
+                        </div>
+
+                        <div class="mb-2 d-grid">
+                                    <a href="/Account/Login" class="btn btn-primary">
+                                Já possui conta? <strong>Acesse aqui!</strong>
+                            </a>
+                        </div>
+
+                }
+
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,95 @@
+﻿@model List<AgendaContatos.Presentation.Models.ContatoConsultaViewModel>
+
+@{
+    Layout = "~/Views/Shared/MainLayout.cshtml";
+}
+
+<div class=" container mt-3" >
+    <div class="card">
+     <div class="card-body">
+
+         <h5>Consulta de contatos</h5>
+         <p>Listagem de contatos em sua agenda.</p>
+         <hr />
+
+         <div class="table-responsive">
+
+             <table id="grid_dados" class="table table-sm table-hover">
+
+                 <thead>
+                   <tr>
+
+                     <th>Nome do contato</th>
+                     <th>Telefone</th>
+                     <th>Email</th>
+                     <th>Data de Nascimento</th>
+                     <th>Tipo</th>
+                     <th>Operações</th>
+
+                    </tr>
+
+
+                  </thead>
+
+                  <tbody>
+
+                      @foreach(var item in Model)
+                    {
+
+
+                       <tr>
+                           <td>@item.Nome</td>
+                           <td>@item.Telefone</td>
+                           <td>@item.Email</td>
+                           <td>@item.DataNascimento</td>
+                           <td>@item.Tipo</td>
+                           
+                           <td>
+                               <a href="/Contato/Edicao/@item.IdContato" 
+                                   class="btn btn-sm btn-outline-primary">
+                                     Editar
+                                
+                                </a>
+
+                                <a href="/Contato/Exclusao/@item.IdContato" 
+                                    class="btn btn-sm btn-outline-danger"
+                                     onclick="return confirm('Deseja realmente excluir esta conta?');">
+                                        Excluir
+                                </a>
+                                
+
+
+                           </td>
+
+
+
+                       </tr>
+
+
+                    }
+
+
+
+                  </tbody>
+
+            </table>
+         </div>
+
+
+      </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>

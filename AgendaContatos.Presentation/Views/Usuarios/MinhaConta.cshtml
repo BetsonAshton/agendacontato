@@ -1,0 +1,75 @@
+﻿@model AgendaContatos.Presentation.Models.AlterarSenhaViewModel
+
+@using Newtonsoft.Json
+@using AgendaContatos.Presentation.Models
+
+
+@{
+    Layout = "~/Views/Shared/MainLayout.cshtml";
+
+    var data = User.Identity.Name;
+
+   var identityViewModel = JsonConvert.DeserializeObject<IdentityViewModel>(data);
+}
+
+<div class="container mt-3">
+    <div class="card">
+        <div class="card-body">
+
+            <h5>Dados do Usuário autenticado:</h5>
+            <hr/>
+            <div class="mb-2">
+                <label>Id do usuário</label>
+                <div><strong>@identityViewModel.IdUsuario</strong></div>
+
+            </div>
+            <div class="mb-2">
+                <label>Nome do usuário:</label>
+                <div><strong>@identityViewModel.Nome</strong></div>
+            </div>
+
+            <div class="mb-2">
+                <label>Email do usuário:</label>
+                <div><strong>@identityViewModel.Email</strong></div>
+            </div>
+
+            <div class="mb-2">
+                <label>Data e hora de acesso:</label>
+                <div><strong>@identityViewModel.DataHoraAcesso</strong></div>
+            </div>
+
+            <hr/>
+
+            <h5>Atualizar Senha de acesso:</h5>
+            
+            @using(Html.BeginForm())
+            {
+                <div class="row mb-2">
+                    <div class="col-md-3">
+                        <label>Nova senha:</label>
+                        @Html.PasswordFor(model => model.NovaSenha, new { @class = "form-control" })
+                        <span class="text-danger">
+                            @Html.ValidationMessageFor(model => model.NovaSenha)
+                        </span>
+                    </div>
+                    <div class="col-md-3">
+                        <label>Confirme a nova senha:</label>
+                        @Html.PasswordFor(model => model.NovaSenhaConfirmacao, new { @class = "form-control" })
+                        <span class="text-danger">
+                            @Html.ValidationMessageFor(model => model.NovaSenhaConfirmacao)
+                        </span>
+                    </div>
+                </div>
+
+                <div class="mb-2">
+                    <div class="col-md-12">
+                        <input type="submit" class="btn btn-success" value="Salvar Alterações"/>
+                    </div>
+                </div>
+            }
+
+
+        </div>
+    </div>
+</div>
+
