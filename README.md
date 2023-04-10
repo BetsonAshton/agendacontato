@@ -6,5 +6,5 @@
 3. Extensões(Bogus, Newtonsoft.Json, Dapper,SqlClient)
 4. CookieAuthentication para AspNet
 5. Envio de email para recuperação de senha
-##A viso!
+## Aviso!
 > Criar o banco de dados com o nome BD_SistemaContas para rodar esse projeto
